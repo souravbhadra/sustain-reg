@@ -41,8 +41,9 @@ im.insert_image(
     width='auto'
 )
 
+sign_up_placeholder = st.empty()
 
-with st.form(key='sign_up_form'):
+with sign_up_placeholder.form(key='sign_up_form'):
     col1, col2, col3 = st.columns(3)
     with col1:
         first_name = st.text_input(label='First Name *', placeholder='e.g., John')
@@ -100,11 +101,77 @@ with st.form(key='sign_up_form'):
         )
     with st.expander("By signing up, you are agreeing to the following terms and conditions"):
         st.write(
-            """The chart above shows some numbers I picked for you.
-            I rolled actual dice for these, so they're *guaranteed* to
-            be random."""
+            """
+            ### Terms and conditions
+            
+            Welcome to SustaiN, a software application designed to assist in the
+            decision-making process of the registered users. Please read the following
+            Terms and Conditions carefully as they govern the use of the software
+            application.
+
+            1. Acceptance of Terms and Conditions: By accessing and using SustaiN, you
+            acknowledge that you have read, understood, and agree to comply with these
+            Terms and Conditions, as well as any applicable laws, rules, or regulations.
+            If you do not agree to these Terms and Conditions, you must not use SustaiN.
+
+            2. Use of SustaiN: The results from SustaiN cannot be sold elsewhere. The
+            information from SustaiN can only be used for accelerating the decision-making
+            procedure of the registered user in their farming or educational or research
+            purposes. The user cannot share his account information to other parties.
+
+            3. Intellectual Property Rights: All intellectual property rights, including
+               but
+            not limited to trademarks, copyrights, patents, trade secrets, and other
+            proprietary rights, in and to SustaiN, are the property of the developer of
+            SustaiN. You shall not reproduce, modify, distribute, display, or sell any
+            part of SustaiN without the prior written consent of the developer of SustaiN.
+
+            4. Disclaimer of Warranties: SustaiN is provided on an "as-is" and "as
+               available"
+            basis. The developer of SustaiN does not guarantee or warrant that SustaiN
+            will be uninterrupted, error-free, or virus-free. The developer of SustaiN
+            makes no representation or warranty of any kind, either express or implied,
+            with respect to SustaiN, including but not limited to warranties of
+            merchantability, fitness for a particular purpose, non-infringement, or
+            suitability for any purpose.
+
+            5. Limitation of Liability: In no event shall the developer of SustaiN be
+               liable
+            for any direct, indirect, incidental, consequential, special, punitive, or
+            exemplary damages, including but not limited to damages for loss of profits,
+            goodwill, use, data or other intangible losses (even if the developer of
+            SustaiN has been advised of the possibility of such damages), arising out of
+            or in connection with the use or inability to use SustaiN.
+
+            6. Modification of Terms and Conditions: The developer of SustaiN reserves the
+            right to modify these Terms and Conditions at any time, and any modifications
+            will be effective immediately upon posting. Your continued use of SustaiN
+            after the modifications have been posted will constitute your acceptance of
+            the modified Terms and Conditions.
+
+            7. Governing Law and Jurisdiction: These Terms and Conditions shall be
+               governed by
+            and construed in accordance with the laws of the jurisdiction where the
+            developer of SustaiN is located. Any dispute arising out of or in connection
+            with these Terms and Conditions shall be resolved by the courts in that
+            jurisdiction.
+
+            8. Termination of Access: The developer of SustaiN reserves the right to
+               terminate
+            your access to SustaiN at any time, without notice, for any reason whatsoever.
+
+            By signing up or by using SustaiN, you signify that you have read, understood,
+            and agree to be bound by these Terms and Conditions. If you have any
+            questions, please reach out to [Sourav Bhadra](mailto:sourav.bhadra@slu.edu)
+            or [Vasit Sagan](mailto:vasit.sagan@slu.edu) regarding your questions.
+            
+            """
         )
     submit_button = st.form_submit_button(label='Sign Up')
+    st.markdown(
+        '<a href="https://sustain-app.herokuapp.com/" target="_self">Already have an account? Sign In Instead!</a>',
+        unsafe_allow_html=True
+    )
  
 
 if submit_button:
@@ -137,9 +204,12 @@ if submit_button:
                 "crop": crop
             }
             table_ref.push(new_record)
-
+            sign_up_placeholder.empty()
+            st.balloons()
+            st.success('Your account has been created. Check your email to verify.', icon="✅")
+            st.markdown(
+                '<a href="https://sustain-app.herokuapp.com/" target="_self">Go to sign In</a>',
+                unsafe_allow_html=True
+            )
         except:
             st.error('There is already an account registered using the email')
-
-signin_link = '<a href="https://sustaincrops.net" target="_self">Already have an account? Sign In Instead!</a>'
-st.markdown(signin_link, unsafe_allow_html=True)
