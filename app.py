@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pyrebase
 from password_strength import PasswordPolicy
@@ -89,6 +90,12 @@ with st.form(key='sign_up_form'):
                 'Sorghum',
                 'Both'
             ]
+        )
+    with st.expander("By signing up, you are agreeing to the following terms and conditions"):
+        st.write(
+            """The chart above shows some numbers I picked for you.
+            I rolled actual dice for these, so they're *guaranteed* to
+            be random."""
         )
     submit_button = st.form_submit_button(label='Sign Up')
  
