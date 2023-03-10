@@ -8,6 +8,13 @@ from utils import image_management as im
 from utils import analyze_form as af
 
 
+# Page config
+st.set_page_config(
+    page_title="SustaiN",
+    page_icon='images\icon.png'
+)
+
+
 load_dotenv(".env")
 # Load env variables
 FBASE_CONFIG = {
