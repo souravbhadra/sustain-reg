@@ -1,4 +1,4 @@
 streamlit==1.20.0
 python-dotenv==0.21.1
 Pyrebase4==4.6.0
-password-strength==0.0.3
+password-strength==0.0.3.post2
