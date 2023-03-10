@@ -11,7 +11,7 @@ from utils import analyze_form as af
 # Page config
 st.set_page_config(
     page_title="SustaiN",
-    page_icon='images\icon.png'
+    page_icon=os.path.join(os.getcwd(), 'images', 'icon.png')
 )
 
 
@@ -35,7 +35,7 @@ db = firebase.database()
     
 
 im.insert_image(
-    'images\logo.png',
+    os.path.join(os.getcwd(), 'images', 'logo.png'),
     sidebar=False,
     margin=(0, 0, 30, 0),
     width='auto'
